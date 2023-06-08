@@ -1,4 +1,3 @@
-%%capture
 !pip install streamlit
 #streamlit hello
 import pandas as pd

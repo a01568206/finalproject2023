@@ -34,39 +34,4 @@ if st.button("Buscar"):
     st.write("\nÚltimos 5 datos:")
     st.write(ultimos_5)
 
-    def encontrar_mejor_momento(precios):
-    max_rendimiento = 0
-    dia_compra = None
-    dia_venta = None
-    precio_compra = 0
-    precio_venta = 0
     
-    for i in range(len(precios)):
-        for j in range(i + 1, len(precios)):
-            rendimiento = (precios.iloc[j]['Adj Close'] - precios.iloc[i]['Adj Close']) / precios.iloc[i]['Adj Close']
-            
-            if rendimiento > max_rendimiento:
-                max_rendimiento = rendimiento
-                dia_compra = precios.index[i]
-                dia_venta = precios.index[j]
-                precio_compra = precios.iloc[i]['Adj Close']
-                precio_venta = precios.iloc[j]['Adj Close']
-    
-    return dia_compra, dia_venta, precio_compra, precio_venta, max_rendimiento
-
-# Obtener los precios y limpiar la base de datos
-precios = obtener_precios_activos(symbol, start_date, end_date)
-
-# Encontrar el mejor momento para comprar y vender
-dia_compra, dia_venta, precio_compra, precio_venta, rendimiento = encontrar_mejor_momento(precios)
-
-# Mostrar los resultados
-if dia_compra is None or dia_venta is None:
-    print("No se pudo generar rendimiento positivo en el período especificado.")
-else:
-    st.write("Día de Compra:", dia_compra)
-    st.write("Día de Venta:", dia_venta)
-    st.write("Precio de Compra:", precio_compra)
-    st.write("Precio de Venta:", precio_venta)
-    st.write("Rendimiento (%):", rendimiento * 100)
-    st.write("Rendimiento ($):", (precio_venta - precio_compra) * 100, "comprando 100 acciones.")

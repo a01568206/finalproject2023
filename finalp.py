@@ -1,4 +1,4 @@
-pip install yfinance
+install yfinance
 import pandas as pd
 import yfinance as yf
 

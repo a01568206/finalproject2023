@@ -23,8 +23,8 @@ primeros_5 = precios.head(5)
 ultimos_5 = precios.tail(5)
 
 # Mostrar los resultados
-print("\nPrimeros 5 datos:")
-print(primeros_5)
+st.write("\nPrimeros 5 datos:")
+st.write(primeros_5)
 
-print("\nÚltimos 5 datos:")
-print(ultimos_5)
+st.write("\nÚltimos 5 datos:")
+st.write(ultimos_5)
